@@ -46,8 +46,6 @@ while (bombs_array.length < 16) {
 }
 console.log("bombs locations: " + bombs_array);
 
-
-
 /************************************
  *            FUNCTIONS             *
  ***********************************/
@@ -90,9 +88,10 @@ function generate_grid(grid, difficulty) {
         //     }
         // )
 
-        // 2. NOPE - cell_el.addEventListener("click",
-        //     function () {
-        //         if (cell_el.innerHTML == bombs_array[i]) {
+        // 2. NOPE - "quando clicco sulla cella, cambia colore"
+        // cell_el.addEventListener("click",
+        //     function() {
+        //         if (bombs_array.includes(this)) {
         //             this.classList.toggle("detonated");
         //         } else {
         //             this.classList.toggle("clicked");
@@ -101,35 +100,25 @@ function generate_grid(grid, difficulty) {
         //     }
         // );
 
-        // 3. BOH - cell_el.addEventListener("click",
-        //     function () {
-               
-        //         // un FOR con un booleano?
-        //         // let exploded;
-        //         // for (let i = 0; ; i++);
-
-
-        //         // if (cell_el.innerHTML == bombs_array[i]) {
-        //         //     this.classList.toggle("detonated");
-        //         // } else {
-        //         //     this.classList.toggle("clicked");
-        //         //     console.log("hai cliccato la cella numero " + this.innerHTML);
-        //         // }
-        //     }
-        // );
-
         // now, ogni volta che genero una cella la devo numerare :)
-        cell_el.innerHTML = i + 1;     
+        cell_el.innerHTML = i + 1;    
+
+        // 3. - "quando clicco sulla cella, cambia colore"
+        cell_el.addEventListener("click",
+            function () {
+                this.classList.toggle("clicked");
+                console.log("hai cliccato la cella numero " + this.innerHTML); // funziona
+
+                if (bombs_array.includes(this.innerHTML)) { // NON funziona
+                    console.log("funziona");
+                }
+            }
+        )
     }
 
 };
 
-
-
-
-
-
-
+// this.classList.toggle("detonated");
 
 
 
