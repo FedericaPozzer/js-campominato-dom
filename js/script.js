@@ -78,9 +78,32 @@ function generate_grid(grid, difficulty) {
         )
 
         // now, ogni volta che genero una cella la devo numerare :)
-        cell_el.innerHTML = i + 1;
+        cell_el.innerHTML = i + 1;     
     }
+
+    // day 2 --> GENERO 16 NUMERI CASUALI DA 1 A 100 - I NUMERI NON DEVONO RIPETERSI
+                // I 16 NUMERI SARANNO LE 16 BOMBE
+    const bombs_array = [];
+
+    while (bombs_array.length < 16) {
+        random_number = Math.floor(Math.random() * 100) + 1;
+
+        if (!bombs_array.includes(random_number)) {
+            bombs_array.push(random_number);
+        }
+    }
+    console.log("bombs locations: " + bombs_array);
+
 };
+
+
+
+
+
+
+
+
+
 
 // BONUS BOH -- non va
 // let numero_celle;
@@ -115,3 +138,5 @@ function generate_grid(grid, difficulty) {
     // LA PARTITA FINISCE ---- COMUNICO CHE HAI PERSO, DOPO TOT CLICK 
 // SE CLICCO 100-16 CASELLE AZZURRE
     // LA PARTITA FINISCE ---- COMUNICO CHE HAI VINTO E CHE SEI UN DRAGO
+
+

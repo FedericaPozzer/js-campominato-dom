@@ -45,6 +45,15 @@ select {
     align-items: center;
 }
 
+.detonated {
+    background-color: red;
+    color: black;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /* OTHER */
 
 .square-medium {
