@@ -80,45 +80,28 @@ function generate_grid(grid, difficulty) {
         cell_el.classList.add("square");
         grid.append(cell_el);
 
-        // 1. OLD - "quando clicco sulla cella, cambia colore"
-        // cell_el.addEventListener("click",
-        //     function () {
-        //         this.classList.toggle("clicked");
-        //         console.log("hai cliccato la cella numero " + this.innerHTML);
-        //     }
-        // )
-
-        // 2. NOPE - "quando clicco sulla cella, cambia colore"
-        // cell_el.addEventListener("click",
-        //     function() {
-        //         if (bombs_array.includes(this)) {
-        //             this.classList.toggle("detonated");
-        //         } else {
-        //             this.classList.toggle("clicked");
-        //             console.log("hai cliccato la cella numero " + this.innerHTML);
-        //         }
-        //     }
-        // );
-
         // now, ogni volta che genero una cella la devo numerare :)
         cell_el.innerHTML = i + 1;    
 
         // 3. - "quando clicco sulla cella, cambia colore"
         cell_el.addEventListener("click",
-            function () {
+            function banana() {
                 this.classList.toggle("clicked");
                 console.log("hai cliccato la cella numero " + this.innerHTML); // funziona
 
-                if (bombs_array.includes(this.innerHTML)) { // NON funziona
-                    console.log("funziona");
+                // SE CLICCANDO UNA CELLA TROVO UNA BOMBA
+                    // LA CELLA SI COLORA DI ROSSO
+                if (bombs_array.includes(parseInt(this.innerHTML))) { // funziona!!
+                    this.classList.toggle("detonated");
+                    cell_el.innerHTML = "BOOM!"; 
+                    // alert("HAI PERSO! Ricarica la pagina per giocare di nuovo!");
+                    console.log("Hai perso! Hai cliccato con successo ")  
                 }
             }
         )
     }
-
 };
 
-// this.classList.toggle("detonated");
 
 
 
@@ -155,33 +138,3 @@ function generate_grid(grid, difficulty) {
     // LA PARTITA FINISCE ---- COMUNICO CHE HAI PERSO, DOPO TOT CLICK
 // SE CLICCO 100-16 CASELLE AZZURRE
     // LA PARTITA FINISCE ---- COMUNICO CHE HAI VINTO E CHE SEI UN DRAGO
-
-
-
-// // day 2 --> // SE CLICCANDO UNA CELLA TROVO UNA BOMBA
-// // LA CELLA SI COLORA DI ROSSO
-// if (bombs_array[i] = this) {
-//     // this.classList.toggle("detonated");
-//     console.log("ciao"); }
-
-// cell_el.addEventListener("click",
-//     function () {
-//         this.classList.toggle("clicked");
-//         console.log("hai cliccato la cella numero " + this.innerHTML);
-//     }
-// )
-
-// if (bombs_array[i] = this) {
-//     console.log("ciao");
-// }
-
-// cell_el.addEventListener("click",
-//     function () {
-//         if (this = bombs_array[i]) {
-//             console.log("addio");
-//         } else {
-//             this.classList.toggle("clicked");
-//             console.log("hai cliccato la cella numero " + this.innerHTML);
-//         }
-//     }
-// )
