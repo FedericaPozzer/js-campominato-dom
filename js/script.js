@@ -73,6 +73,8 @@ function generate_grid(grid, difficulty) {
     // funziona? NOPE -- perchè? AAAAH ok, perchè siamo dentro a un click iniziale -.-" ok, funziona!
     // console.log(lista_numeri);
 
+    // per contare i "click" eseguiti!
+    let tentatives = 0;
 
     for (let i = 0; i < 100; i++) {
         // creo le celle
@@ -84,24 +86,39 @@ function generate_grid(grid, difficulty) {
         cell_el.innerHTML = i + 1;    
 
         // 3. - "quando clicco sulla cella, cambia colore"
+
         cell_el.addEventListener("click",
-            function banana() {
+            function () {
+
                 this.classList.toggle("clicked");
-                console.log("hai cliccato la cella numero " + this.innerHTML); // funziona
+                console.log("hai cliccato la cella numero " + this.innerHTML); // funziona.. come conto i click?
+
+                // conto i click eseguiti
+                tentatives++;
+                // console.log(tentatives); YESSS!
 
                 // SE CLICCANDO UNA CELLA TROVO UNA BOMBA
                     // LA CELLA SI COLORA DI ROSSO
                 if (bombs_array.includes(parseInt(this.innerHTML))) { // funziona!!
                     this.classList.toggle("detonated");
                     cell_el.innerHTML = "BOOM!"; 
-                    // alert("HAI PERSO! Ricarica la pagina per giocare di nuovo!");
-                    console.log("Hai perso! Hai cliccato con successo ")  
+
+                        // LA PARTITA FINISCE ----> COMUNICO CHE HAI PERSO, DOPO TOT CLICK
+                    console.log("Hai perso! Sei esploso al tuo " + tentatives + " click!")  
+                    alert("HAI PERSO! Sei esploso al tuo " + tentatives + " click!");
+                }
+                    
+                    // LA PARTITA FINISCE ----> COMUNICO CHE HAI VINTO E CHE SEI UN DRAGO
+                if (tentatives == (100 - 16)) {
+                    console.log("HAI VINTO! Complimenti: hai cliccato tutte le caselle non esplosive!");
+                    alert("HAI VINTO! Complimenti: hai cliccato tutte le caselle non esplosive!");
                 }
             }
+            
         )
+       
     }
 };
-
 
 
 
@@ -131,10 +148,10 @@ function generate_grid(grid, difficulty) {
 // Errata corrige: rendere le caselle "non cliccabili" e far finire la partita è un superbonus, non è richiesto dalla consegna!
 // Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l'utente ha cliccato su una cella che non era una bomba.
 
-// GENERO 16 NUMERI CASUALI DA 1 A 100 - I NUMERI NON DEVONO RIPETERSI
-// I 16 NUMERI SARANNO LE 16 BOMBE
-// SE CLICCANDO UNA CELLA TROVO UNA BOMBA
-    // LA CELLA SI COLORA DI ROSSO
-    // LA PARTITA FINISCE ---- COMUNICO CHE HAI PERSO, DOPO TOT CLICK
-// SE CLICCO 100-16 CASELLE AZZURRE
-    // LA PARTITA FINISCE ---- COMUNICO CHE HAI VINTO E CHE SEI UN DRAGO
+// ok -- GENERO 16 NUMERI CASUALI DA 1 A 100 - I NUMERI NON DEVONO RIPETERSI
+// ok -- I 16 NUMERI SARANNO LE 16 BOMBE
+// ok -- SE CLICCANDO UNA CELLA TROVO UNA BOMBA
+    // ok -- LA CELLA SI COLORA DI ROSSO
+    // ok -- LA PARTITA FINISCE ----> COMUNICO CHE HAI PERSO, DOPO TOT CLICK
+// ok -- SE CLICCO 100-16 CASELLE AZZURRE
+    // ok -- LA PARTITA FINISCE ----> COMUNICO CHE HAI VINTO E CHE SEI UN DRAGO
