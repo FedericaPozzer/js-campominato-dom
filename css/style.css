@@ -54,14 +54,12 @@ select {
     align-items: center;
 }
 
-/* OTHER */
+/* OTHER LEVELS */
 
 .square-medium {
     height: calc(100% / 9);
     width: calc(100% / 9);
     border: 1px solid palevioletred;
-
-    background-color: rgb(173, 45, 87);
 
     display: flex;
     justify-content: center;
@@ -73,8 +71,6 @@ select {
     height: calc(100% /8);
     width: calc(100% / 8);
     border: 1px solid palevioletred;
-
-    background-color: rgb(173, 45, 87);
 
     display: flex;
     justify-content: center;
